@@ -1,19 +1,23 @@
 import React from 'react';
 import './App.css';
-import Header from './components/headerComponent/header';
-import Footer from './components/footerComponent/footer';
-import HomePage from './components/pages/homePageComponent/homePage';
-import SignIn from './components/SignIn';
+import SignIn from './views/administration/login/SignIn';
+import  { BrowserRouter as Router, Route } from 'react-router-dom'
+import Home from "./views/public/home/home";
+import PlanManagement from "./views/administration/planManagement/planManagement";
+import MemberManagement from "./views/administration/memberManagement/memberManagement";
+import Header from "./communs/header/header";
 
 //components
 
 function App() {
   return (
-    <div className="App">
-        <SignIn/>
-          <HomePage/>
-        <Footer/>
-    </div>
+      <Router>
+          <Route path="/" exact component={Home}/>
+          <Route path="/administration" component={Header}/>
+          <Route path="/administration/plan" exact component={PlanManagement}/>
+          <Route path="/administration/members" exact component={MemberManagement}/>
+          <Route path="/login" exact component={SignIn}/>
+      </Router>
   );
 }
 
